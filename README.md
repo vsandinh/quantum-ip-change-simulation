@@ -25,9 +25,9 @@ data/
         └── qutrit_tomography_metric_01.csv  ...  qutrit_tomography_metric_40.csv
 
 src/
-├── [insert_script_name_1.py]
-├── [insert_script_name_2.py]
-└── [insert_script_name_3.py]
+├── SimulationTwoQubit.ipynb
+├── SimulationQutrit.ipynb
+└── [insert_plotting_script_name.py]
 ```
 
 ## Data Description
