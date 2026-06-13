@@ -1,14 +1,14 @@
-# Quantum IP-Change Simulation
+# Benchmarking Non-Unitary Quantum Processes
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 
 This repository contains the experimental data and data analysis code for the manuscript:  
-**Experimental simulation of a Hilbert-space inner-product change**
+**Benchmarking non-unitary quantum processes: An adversarial certification framework demonstrated via inner-product change**
 
 ## Overview
-This codebase supports the experimental demonstration of simulating non-unitary quantum channels—specifically, the inner-product (IP) change of a qubit system. The simulation is executed by embedding the non-unitary action into a larger unitary operation. We compare the performance of this simulation using two different hardware approaches on a Rigetti superconducting processor:
-1. A two-qubit hardware framework using entangling gates.
-2. A hardware-native, single-qutrit framework leveraging the higher-dimensional subspace.
+This codebase supports the experimental demonstration of an adversarial certification framework for trace-non-increasing quantum operations, applied to the simulation of a Hilbert-space inner-product (IP) change on a superconducting quantum processor. The framework constructs a theoretical adversary restricted to unitary operations within the computational subspace augmented by classical post-selection, and certifies whether an implementation achieves process fidelity beyond this adversarial threshold — witnessing the use of genuinely higher-dimensional resources. We compare two hardware implementations on a Rigetti Aspen-11 processor:
+1. A two-qubit framework embedding the non-unitary operation via Naimark dilation using entangling gates.
+2. A hardware-native single-qutrit framework leveraging the higher-dimensional subspace of a transmon qubit.
 
 ## Repository Structure
 
@@ -29,7 +29,8 @@ src/
 ├── SimulationQutrit.ipynb
 ├── PostProcessingTwoQubit.ipynb
 ├── PostProcessingQutrit.ipynb
-└── PlotQutritBarChart.ipynb
+├── PlotQutritBarChart.ipynb
+└── PlotSphere.ipynb
 ```
 
 ## Data Description
@@ -94,6 +95,8 @@ One CSV file per metric (40 total). Each file contains the raw measurement count
 * `PostProcessingQutrit.ipynb`: Post-processes the raw qutrit tomography data to produce process fidelities. Reconstructs Choi matrices from REM-corrected counts via linear inversion, projects to the nearest physical operator, and evaluates process fidelity against the ideal Choi matrix and the adversarial threshold. Saves results to `data/processed/`.
 
 * `PlotQutritBarChart.ipynb`: Generates the four-panel bar chart figure comparing raw, error-mitigated, and ideal qutrit process tomography outcome probabilities for a selected metric operator, along with their difference. Reads from `data/raw_tomography/qutrit_raw_counts/` and saves figures to `figures/`.
+
+* `PlotSphere.ipynb`: Generates the polar sphere plots showing which metric operators pass or fail the adversarial certification threshold, visualised as points on a sphere parameterised by $(r, \theta, \phi)$. Produces both a vertical plane (meridional slice, varying $\theta$) and a horizontal plane (equatorial slice, varying $\phi$) for either the qutrit or two-qubit experiment. Reads from `data/processed/experimental_fidelities_master.csv` and saves figures to `figures/`.
 
 ## Requirements
 
