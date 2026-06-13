@@ -27,8 +27,9 @@ data/
 src/
 ├── SimulationTwoQubit.ipynb
 ├── SimulationQutrit.ipynb
+├── PostProcessingTwoQubit.ipynb
 ├── PostProcessingQutrit.ipynb
-└── [insert_plotting_script_name.py]
+└── PlotQutritBarChart.ipynb
 ```
 
 ## Data Description
@@ -88,9 +89,11 @@ One CSV file per metric (40 total). Each file contains the raw measurement count
 
 * `SimulationQutrit.ipynb`: Implements QPT for the single-qutrit simulation. Defines the native qutrit gate decomposition using 0-1 and 1-2 transition pulses, runs QPT on the Rigetti Aspen-11 processor using a custom IQ readout procedure, and applies readout error mitigation (REM) via linear SVM classification and confusion matrix inversion. Saves raw and REM-corrected counts to `data/raw_tomography/qutrit_raw_counts/`.
 
+* `PostProcessingTwoQubit.ipynb`: Post-processes the reconstructed two-qubit Choi matrices to produce process fidelities. Projects each Choi matrix to the nearest physical (positive semidefinite) operator and evaluates process fidelity against the ideal Choi matrix and the adversarial threshold. Saves results to `data/processed/`.
+
 * `PostProcessingQutrit.ipynb`: Post-processes the raw qutrit tomography data to produce process fidelities. Reconstructs Choi matrices from REM-corrected counts via linear inversion, projects to the nearest physical operator, and evaluates process fidelity against the ideal Choi matrix and the adversarial threshold. Saves results to `data/processed/`.
 
-* `[insert_plotting_script_name.py]`: Plotting scripts for generating the 3D spherical fidelity plots shown in the manuscript.
+* `PlotQutritBarChart.ipynb`: Generates the four-panel bar chart figure comparing raw, error-mitigated, and ideal qutrit process tomography outcome probabilities for a selected metric operator, along with their difference. Reads from `data/raw_tomography/qutrit_raw_counts/` and saves figures to `figures/`.
 
 ## Requirements
 
