@@ -83,12 +83,17 @@ One CSV file per metric (40 total). Each file contains the raw measurement count
 
 ## Source Code
 
-* `[insert_script_name_1.py]`: Script used to generate the (r, θ, φ) metric operator parameter grid.
-* `[insert_script_name_2.py]`: Script used for evaluating the process tomography data and performing readout error mitigation (REM).
+* `SimulationTwoQubit.ipynb`: Implements quantum process tomography (QPT) for the two-qubit simulation. Defines the metric operator parameter grid, constructs the two-qubit embedding circuit, runs QPT on the Rigetti Aspen-11 processor with post-selection on the ancilla qubit, and reconstructs Choi matrices via linear inversion. Saves raw tomography data to `data/raw_tomography/qubit_tomography/` and Choi matrices to `data/raw_tomography/qubit_choi_matrices/`.
+
+* `SimulationQutrit.ipynb`: Implements QPT for the single-qutrit simulation. Defines the native qutrit gate decomposition using 0-1 and 1-2 transition pulses, runs QPT on the Rigetti Aspen-11 processor using a custom IQ readout procedure, and applies readout error mitigation (REM) via linear SVM classification and confusion matrix inversion. Saves raw and REM-corrected counts to `data/raw_tomography/qutrit_raw_counts/`.
+
 * `[insert_script_name_3.py]`: Plotting scripts for generating the 3D spherical fidelity plots shown in the manuscript.
 
 ## Requirements
-To run the analysis and plotting scripts locally, ensure you have Python 3.x installed along with the following packages:
+
+Python 3.7 or later is required. The QPT notebooks additionally require access to a Rigetti Quantum Cloud Services (QCS) account and the Aspen-11 QPU.
+
+To run the analysis and plotting scripts locally, install the following packages:
 ```bash
-pip install numpy pandas scipy matplotlib
+pip install numpy pandas scipy matplotlib scikit-learn pyquil forest-benchmarking
 ```
