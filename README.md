@@ -1,6 +1,6 @@
 # Benchmarking Non-Unitary Quantum Processes
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23372890.svg)](https://doi.org/10.5281/zenodo.23372890)
 
 This repository contains the experimental data and data analysis code for the manuscript:  
 **Benchmarking non-unitary quantum processes: An adversarial certification framework demonstrated via inner-product change**
